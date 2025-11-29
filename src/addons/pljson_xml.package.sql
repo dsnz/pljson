@@ -126,7 +126,7 @@ create or replace package body pljson_xml as
               end if;
             end loop;
           end;
-        elsif (v_value.is_null() or (v_value.is_string() and v_value.get_string() = '')) then
+        elsif (v_value.is_null() or (v_value.is_string() and v_value.get_string() is null)) then
           add_to_clob(xmlstr, xmlbuf, '<' || key_str || '/>');
         else
           toString(v_value, key_str, xmlstr, xmlbuf);
